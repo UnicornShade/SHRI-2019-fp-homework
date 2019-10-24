@@ -19,7 +19,7 @@
  * const lengthGreaterThenOne = x => x.length > 1;
  */
 
-import { replace, length, compose, test, allPass, curry, anyPass, not, both } from 'ramda'
+import { replace, length, compose, test, allPass, curry, anyPass, lift, not } from 'ramda'
 
 const replaceNumbers = replace(/[^0-9]/g, '')
 
@@ -47,7 +47,8 @@ const numbersMore = curry((count, value) => getNumbersCount(value) > count)
 const numbersLess = curry((count, value) => getNumbersCount(value) < count)
 
 const hasNumber = curry((number, value) => value.indexOf(number) !== -1)
-const hasNoNumber = curry((number, value) => not(hasNumber(number, value)))
+const hasNoNumber = lift(not)(hasNumber)
+// const hasNoNumber = curry((number, value) => not(hasNumber(number, value)))
 
 // 1. Длина < 5 и кол-во цифр > 2 шт.
 export const validateFieldN1 = allPass([lengthLess(5), numbersMore(2)]);
