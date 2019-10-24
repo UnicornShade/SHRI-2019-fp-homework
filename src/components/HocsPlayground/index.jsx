@@ -19,6 +19,7 @@ const DescriptionList = () => (
 const HocsPlayground = () => {
     const [innerColor, setInnerColor] = useState('blue');
     const [outerColor, setOuterColor] = useState('red');
+    // const []
 
     return (
         <Fragment>
