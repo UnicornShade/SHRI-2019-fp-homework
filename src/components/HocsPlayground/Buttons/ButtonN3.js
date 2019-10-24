@@ -5,9 +5,8 @@ import { compose, withState, withHandlers, withProps } from 'recompose';
 import { juxt, ifElse, always, inc } from 'ramda'
 import BaseButton from './BaseButton';
 
-const setAllColors = (setOuterColor, setInnerColor) => juxt([setOuterColor, setInnerColor])
-
 const isEven = number => number % 2 === 0
+
 const getColor = ifElse(
   isEven,
   always('gray'),
@@ -21,7 +20,7 @@ export default compose(
       setCounter(n => {
         const counter = inc(n)
 
-        setAllColors(setOuterColor, setInnerColor)(getColor(counter))
+        juxt([setOuterColor, setInnerColor])(getColor(counter))
 
         return counter
       })
