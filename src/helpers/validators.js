@@ -48,7 +48,6 @@ const numbersLess = curry((count, value) => getNumbersCount(value) < count)
 
 const hasNumber = curry((number, value) => value.indexOf(number) !== -1)
 const hasNoNumber = lift(not)(hasNumber)
-// const hasNoNumber = curry((number, value) => not(hasNumber(number, value)))
 
 // 1. Длина < 5 и кол-во цифр > 2 шт.
 export const validateFieldN1 = allPass([lengthLess(5), numbersMore(2)]);
