@@ -4,7 +4,7 @@
 import React from 'react'
 import { juxt } from 'ramda'
 import { sample } from 'lodash'
-import { compose, withState, withHandlers, lifecycle } from 'recompose'
+import { compose, withState, withHandlers, lifecycle, pure } from 'recompose'
 
 import BaseButton from './BaseButton'
 
@@ -20,6 +20,7 @@ const withRotateTransformation = Component => props => {
 }
 
 export default compose(
+  pure,
   withState('degrees', 'setDegrees', 0),
   withHandlers({ onClick: ({ setDegrees }) => () => setDegrees(n => n + 30) }),
   withRotateTransformation,
